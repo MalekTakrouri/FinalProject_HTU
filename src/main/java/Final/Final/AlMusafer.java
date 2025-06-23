@@ -147,8 +147,49 @@ public class AlMusafer {
 		}
 
 	}
-
+	
+	
 	@Test(priority = 9, enabled = false)
+	public void ApplyPriceFlitering() throws InterruptedException {
+		Thread.sleep(15000);
+
+		WebElement PriceFilter = driver.findElement(By.xpath("//div[@data-testid='srp_sort_LOWEST_PRICE']"));
+		PriceFilter.click();
+	}
+
+	@Test(priority = 10, enabled = false)
+	public void ApplyRatingFlitering() throws InterruptedException {
+		Thread.sleep(15000);
+
+		WebElement StarsFilter = driver.findElement(By.xpath("//div[contains(text(),'4 stars')]"));
+		StarsFilter.click();
+
+	}
+
+	@Test(priority = 11, enabled = false)
+	public void ChangeCurrency() throws InterruptedException {
+		// Click on the currency list
+		WebElement currencyList = driver.findElement(By.xpath("//div[@data-testid='Header__CurrencySelector']"));
+		currencyList.click();
+
+		Thread.sleep(1000);
+
+		String[] currencyPrefixes = { "QAR", "AED", "USD", "EGP", "EUR" };
+
+		int randomCurrencyIndex = rand.nextInt(currencyPrefixes.length);
+		String selectedCurrency = currencyPrefixes[randomCurrencyIndex];
+
+		WebElement randomCurrency = driver
+				.findElement(By.xpath("//div[@data-testid='CurrencySelection__" + selectedCurrency + "']"));
+
+		randomCurrency.click();
+
+		System.out.println("Selected Currency: " + selectedCurrency);
+
+	}
+
+
+	@Test(priority = 12, enabled = false)
 	public void checkAPILoaded() throws InterruptedException {
 		Thread.sleep(10000);
 		String APIResult = driver.findElement(By.cssSelector(".MuiTypography-root.MuiTypography-heading4SemBld.__ds__comp.undefined.muiltr-13ipltw")).getText();
@@ -164,7 +205,7 @@ public class AlMusafer {
 
 //		__________________________________________________________________________________
 
-	@Test(priority = 10, enabled = false)
+	@Test(priority = 13, enabled = false)
 	public void randomCityTwoWay() throws InterruptedException {
 
 		String[] CitiesTwoWayInEnglish = { "dubai", "jeddah", "riyadh" };
@@ -213,7 +254,7 @@ public class AlMusafer {
 	}
 //			
 
-	@Test(priority = 11, enabled = false)
+	@Test(priority = 14, enabled = false)
 	public void randomCityOneWay() throws InterruptedException {
 
 		String[] CitiesOneWayInEnglish = { "dubai", "jeddah", "riyadh" };
@@ -261,45 +302,7 @@ public class AlMusafer {
 
 	}
 
-	@Test(priority = 12, enabled = false)
-	public void ApplyPriceFlitering() throws InterruptedException {
-		Thread.sleep(15000);
-
-		WebElement PriceFilter = driver.findElement(By.xpath("//div[@data-testid='srp_sort_LOWEST_PRICE']"));
-		PriceFilter.click();
-	}
-
-	@Test(priority = 13, enabled = false)
-	public void ApplyRatingFlitering() throws InterruptedException {
-		Thread.sleep(15000);
-
-		WebElement StarsFilter = driver.findElement(By.xpath("//div[contains(text(),'4 stars')]"));
-		StarsFilter.click();
-
-	}
-
-	@Test(priority = 14, enabled = false)
-	public void ChangeCurrency() throws InterruptedException {
-		// Click on the currency list
-		WebElement currencyList = driver.findElement(By.xpath("//div[@data-testid='Header__CurrencySelector']"));
-		currencyList.click();
-
-		Thread.sleep(1000);
-
-		String[] currencyPrefixes = { "QAR", "AED", "USD", "EGP", "EUR" };
-
-		int randomCurrencyIndex = rand.nextInt(currencyPrefixes.length);
-		String selectedCurrency = currencyPrefixes[randomCurrencyIndex];
-
-		WebElement randomCurrency = driver
-				.findElement(By.xpath("//div[@data-testid='CurrencySelection__" + selectedCurrency + "']"));
-
-		randomCurrency.click();
-
-		System.out.println("Selected Currency: " + selectedCurrency);
-
-	}
-
+	
 	@Test(priority = 15, enabled = false)
 	public void NavigationToTermsConditionsPage() throws InterruptedException {
 		Thread.sleep(2000);

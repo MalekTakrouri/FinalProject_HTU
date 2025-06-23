@@ -5,8 +5,8 @@
     <classes>
       <class name="Final.Final.AlMusafer">
         <methods>
-          <include name="checkAPILoaded"/>
           <include name="mySetup"/>
+          <include name="NavigationToTermsConditionsPage"/>
         </methods>
       </class> <!-- Final.Final.AlMusafer -->
     </classes>
